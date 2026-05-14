@@ -1,190 +1,1114 @@
-
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{margin:0}
-.p{font-family:'Manrope',system-ui,sans-serif;background:#FFFBF3;color:#0F1919}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+  }
 
-/* NAV */
-.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:#FFFBF3;border-bottom:0.5px solid rgba(15,25,25,0.08)}
-.nav-left{display:flex;align-items:center;gap:10px}
-.lm{width:28px;height:28px;background:#BA3B41;border-radius:6px;display:flex;align-items:center;justify-content:center}
-.lm-inner{width:14px;height:10px;display:flex;flex-direction:column;gap:3px}
-.lm-bar{height:2px;background:#FFFBF3;border-radius:1px}
-.lm-bar.short{width:70%}
-.nav-brand{font-size:12px;font-weight:700;letter-spacing:0.06em;color:#0F1919}
-.nav-brand span{color:#BA3B41}
-.nav-right{display:flex;align-items:center;gap:20px}
-.nav-link{font-size:11px;font-weight:600;color:rgba(15,25,25,0.4);letter-spacing:0.05em;text-transform:uppercase;cursor:pointer}
-.nav-link:hover{color:#BA3B41}
-.nav-share{padding:7px 16px;background:#0F1919;color:#FFFBF3;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:0.04em;cursor:pointer;border:none;font-family:inherit}
+  body {
+    margin: 0
+  }
 
-/* HERO */
-.hero{display:grid;grid-template-columns:1fr 320px;min-height:520px}
-.hero-l{padding:64px 48px;display:flex;flex-direction:column;justify-content:center}
-.cohort-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px 4px 4px;background:rgba(186,59,65,0.07);border:0.5px solid rgba(186,59,65,0.18);border-radius:100px;margin-bottom:24px;width:fit-content}
-.cohort-dot{width:18px;height:18px;background:#BA3B41;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.cohort-dot i{font-size:10px;color:#FFFBF3}
-.cohort-text{font-size:11px;font-weight:700;color:#BA3B41;letter-spacing:0.06em;text-transform:uppercase}
-.hero-name{font-size:52px;font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:#0F1919;margin-bottom:4px}
-.hero-name em{font-style:italic;font-weight:300;color:#BA3B41}
-.hero-role{font-size:14px;font-weight:500;color:rgba(15,25,25,0.45);margin-bottom:16px;letter-spacing:0.01em}
-.hero-product{font-size:15px;font-weight:600;color:#0F1919;padding:10px 16px;background:#FBF4D7;border-radius:8px;border-left:3px solid #BA3B41;margin-bottom:32px;line-height:1.5}
-.hero-product span{font-weight:400;color:rgba(15,25,25,0.6)}
+  .p {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: #FFFBF3;
+    color: #0F1919
+  }
 
-/* metrics row */
-.metrics{display:flex;gap:0;margin-bottom:32px;border:0.5px solid rgba(15,25,25,0.08);border-radius:10px;overflow:hidden;background:#fff}
-.metric{flex:1;padding:16px 18px;border-right:0.5px solid rgba(15,25,25,0.07)}
-.metric:last-child{border-right:none}
-.metric-val{font-size:24px;font-weight:800;color:#0F1919;letter-spacing:-0.02em;line-height:1}
-.metric-val.crimson{color:#BA3B41}
-.metric-lbl{font-size:10px;font-weight:600;color:rgba(15,25,25,0.38);text-transform:uppercase;letter-spacing:0.07em;margin-top:3px}
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: #FFFBF3;
+    border-bottom: 0.5px solid rgba(15, 25, 25, 0.08)
+  }
 
-.hero-links{display:flex;gap:10px;flex-wrap:wrap}
-.btn-r{padding:10px 18px;background:#BA3B41;color:#FFFBF3;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.03em}
-.btn-o{padding:10px 18px;background:transparent;color:#0F1919;border:0.5px solid rgba(15,25,25,0.18);border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.03em}
-.btn-i{padding:10px 18px;background:transparent;color:#BA3B41;border:0.5px solid rgba(186,59,65,0.22);border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.03em}
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
 
-.hero-r{background:#0F1919;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;gap:0;position:relative;overflow:hidden}
-.hero-blob{position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(186,59,65,0.1);bottom:-60px;right:-60px}
-.hero-blob2{position:absolute;width:100px;height:100px;border-radius:50%;background:rgba(251,244,215,0.04);top:-30px;left:-30px}
-.avatar{width:120px;height:120px;border-radius:50%;background:#BA3B41;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800;color:#FFFBF3;margin-bottom:16px;position:relative;z-index:2;border:2px solid rgba(251,244,215,0.15)}
-.avatar-name{font-size:17px;font-weight:800;color:#FFFBF3;text-align:center;position:relative;z-index:2;margin-bottom:2px}
-.avatar-sub{font-size:11px;color:rgba(255,251,243,0.35);letter-spacing:0.06em;text-align:center;position:relative;z-index:2;margin-bottom:24px}
-.ffp-cert-badge{background:rgba(186,59,65,0.14);border:0.5px solid rgba(186,59,65,0.28);border-radius:10px;padding:12px 16px;width:100%;position:relative;z-index:2}
-.cert-row{display:flex;align-items:center;gap:10px}
-.cert-icon{width:32px;height:32px;background:#BA3B41;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cert-icon i{font-size:16px;color:#FFFBF3}
-.cert-label{font-size:10px;font-weight:600;color:rgba(255,251,243,0.45);text-transform:uppercase;letter-spacing:0.08em}
-.cert-name{font-size:12px;font-weight:700;color:#FFFBF3;margin-top:1px}
+  .lm {
+    width: 28px;
+    height: 28px;
+    background: #BA3B41;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
 
-/* SECTION COMMONS */
-.sec{padding:64px 48px;border-top:0.5px solid rgba(15,25,25,0.06)}
-.sec.cream{background:#FBF4D7}
-.sec.dark{background:#0F1919}
-.sec.white{background:#FFFBF3}
-.sec-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#BA3B41;margin-bottom:6px}
-.sec-tag.light{color:#DFA396}
-.sec-h{font-size:32px;font-weight:800;letter-spacing:-0.025em;line-height:1.1;color:#0F1919;margin-bottom:4px}
-.sec-h em{font-style:italic;font-weight:300;color:rgba(15,25,25,0.35)}
-.sec-h.inv{color:#FFFBF3}
-.sec-h.inv em{color:rgba(255,251,243,0.3)}
-.sec-sub{font-size:13px;color:rgba(15,25,25,0.45);margin-bottom:40px;max-width:480px;line-height:1.6}
-.sec-sub.inv{color:rgba(255,251,243,0.4)}
+  .lm-inner {
+    width: 14px;
+    height: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px
+  }
 
-/* PRODUCT SECTION */
-.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.product-photo{background:#FBF4D7;border:0.5px solid rgba(15,25,25,0.08);border-radius:14px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.product-photo i{font-size:36px;color:rgba(186,59,65,0.3)}
-.product-photo-label{font-size:11px;font-weight:600;color:rgba(15,25,25,0.3);text-transform:uppercase;letter-spacing:0.06em}
-.product-info{display:flex;flex-direction:column;gap:16px}
-.product-name-block{}
-.product-name{font-size:26px;font-weight:800;color:#0F1919;letter-spacing:-0.02em;margin-bottom:3px}
-.product-desc{font-size:13px;color:rgba(15,25,25,0.6);line-height:1.65}
-.info-row{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#fff;border:0.5px solid rgba(15,25,25,0.08);border-radius:8px}
-.info-row i{font-size:16px;color:#BA3B41;flex-shrink:0}
-.info-row-content{}
-.info-row-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(15,25,25,0.35)}
-.info-row-val{font-size:13px;font-weight:600;color:#0F1919;margin-top:1px}
-.info-row-val a{color:#BA3B41;text-decoration:none}
+  .lm-bar {
+    height: 2px;
+    background: #FFFBF3;
+    border-radius: 1px
+  }
 
-/* PROOF */
-.proof-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:32px}
-.pcard{border-radius:10px;padding:20px 16px}
-.pcard.dark-acc{background:#BA3B41}
-.pcard.light-acc{background:#FBF4D7;border:0.5px solid rgba(15,25,25,0.07)}
-.pcard-val{font-size:26px;font-weight:800;letter-spacing:-0.02em;color:#0F1919;margin-bottom:2px}
-.pcard.dark-acc .pcard-val{color:#FFFBF3}
-.pcard-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(15,25,25,0.4)}
-.pcard.dark-acc .pcard-lbl{color:rgba(255,251,243,0.55)}
+  .lm-bar.short {
+    width: 70%
+  }
 
-/* EVENT PHOTOS */
-.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
-.event-photo{border-radius:12px;overflow:hidden;border:0.5px solid rgba(15,25,25,0.08)}
-.event-photo-img{background:#FBF4D7;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.event-photo-img i{font-size:32px;color:rgba(186,59,65,0.35)}
-.event-photo-img span{font-size:11px;font-weight:600;color:rgba(15,25,25,0.3);text-transform:uppercase;letter-spacing:0.06em}
-.event-photo-cap{padding:12px 14px;background:#fff}
-.event-photo-cap-title{font-size:13px;font-weight:700;color:#0F1919}
-.event-photo-cap-sub{font-size:11px;color:rgba(15,25,25,0.45);margin-top:2px}
+  .nav-brand {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #0F1919
+  }
 
-/* ASSETS */
-.asset-cat{margin-bottom:28px}
-.asset-cat-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:rgba(15,25,25,0.45);margin-bottom:10px;padding-bottom:8px;border-bottom:0.5px solid rgba(15,25,25,0.08);display:flex;align-items:center;gap:6px}
-.asset-cat-title i{font-size:14px;color:#BA3B41}
-.asset-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.asset-thumb{background:#FBF4D7;border:0.5px solid rgba(15,25,25,0.08);border-radius:8px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
-.asset-thumb.video{background:#0F1919}
-.asset-thumb i{font-size:22px;color:rgba(186,59,65,0.5)}
-.asset-thumb.video i{color:rgba(186,59,65,0.7)}
-.asset-thumb span{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:rgba(15,25,25,0.3)}
-.asset-thumb.video span{color:rgba(255,251,243,0.3)}
+  .nav-brand span {
+    color: #BA3B41
+  }
 
-/* AI TOOLS — STATIC */
-.ai-intro{background:#FBF4D7;border-radius:10px;padding:14px 16px;margin-bottom:28px;border:0.5px solid rgba(15,25,25,0.07);display:flex;align-items:center;gap:10px}
-.ai-intro i{font-size:16px;color:#BA3B41;flex-shrink:0}
-.ai-intro-text{font-size:12px;color:rgba(15,25,25,0.6);line-height:1.5}
-.ai-intro-text strong{color:#0F1919;font-weight:700}
-.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tool-card{background:rgba(255,251,243,0.05);border:0.5px solid rgba(255,251,243,0.09);border-radius:10px;padding:16px 14px}
-.tool-name{font-size:13px;font-weight:700;color:#FFFBF3;margin-bottom:3px}
-.tool-use{font-size:11px;color:rgba(255,251,243,0.4);line-height:1.5;margin-bottom:10px}
-.tool-level{display:flex;align-items:center;gap:6px}
-.level-dots{display:flex;gap:3px}
-.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,251,243,0.12)}
-.dot.on{background:#BA3B41}
-.level-label{font-size:10px;font-weight:600;color:rgba(255,251,243,0.3);text-transform:uppercase;letter-spacing:0.06em}
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px
+  }
 
-/* AWARDS — conditional */
-.awards-wrap{display:flex;flex-direction:column;gap:12px}
-.award-card{display:flex;align-items:center;gap:16px;padding:20px 20px;background:#FBF4D7;border-radius:10px;border:0.5px solid rgba(15,25,25,0.07)}
-.award-icon-wrap{width:44px;height:44px;background:#BA3B41;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.award-icon-wrap i{font-size:22px;color:#FFFBF3}
-.award-title{font-size:15px;font-weight:800;color:#0F1919;margin-bottom:2px}
-.award-sub{font-size:12px;color:rgba(15,25,25,0.5)}
-.award-badge{margin-left:auto;padding:4px 10px;background:rgba(186,59,65,0.1);border:0.5px solid rgba(186,59,65,0.22);border-radius:100px;font-size:10px;font-weight:700;color:#BA3B41;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap}
+  .nav-link {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(15, 25, 25, 0.4);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer
+  }
 
-/* CERTIFICATE */
-.cert-section-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.cert-card{border:1.5px solid rgba(186,59,65,0.25);border-radius:14px;padding:32px 28px;background:#fff;position:relative;overflow:hidden}
-.cert-watermark{position:absolute;bottom:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(186,59,65,0.05)}
-.cert-top{display:flex;align-items:center;gap:10px;margin-bottom:20px}
-.cert-top-icon{width:36px;height:36px;background:#BA3B41;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.cert-top-icon i{font-size:18px;color:#FFFBF3}
-.cert-top-text{}
-.cert-top-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.09em;color:rgba(15,25,25,0.4)}
-.cert-top-name{font-size:13px;font-weight:700;color:#0F1919}
-.cert-divider{height:0.5px;background:rgba(15,25,25,0.08);margin:0 0 16px}
-.cert-issued-to{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(15,25,25,0.35);margin-bottom:4px}
-.cert-student-name{font-size:22px;font-weight:800;color:#0F1919;letter-spacing:-0.01em;margin-bottom:4px}
-.cert-program{font-size:12px;color:rgba(15,25,25,0.5);margin-bottom:16px}
-.cert-sigs{display:flex;gap:20px}
-.cert-sig{}
-.cert-sig-line{width:80px;height:0.5px;background:#0F1919;margin-bottom:4px}
-.cert-sig-name{font-size:11px;font-weight:600;color:#0F1919}
-.cert-sig-role{font-size:10px;color:rgba(15,25,25,0.4)}
-.cert-note{background:#FBF4D7;border-radius:8px;padding:14px 16px;font-size:12px;color:rgba(15,25,25,0.6);line-height:1.6}
-.cert-note strong{color:#0F1919}
+  .nav-link:hover {
+    color: #BA3B41
+  }
 
-/* CONTACT */
-.contact-bar{background:#BA3B41;padding:52px 48px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
-.contact-h{font-size:28px;font-weight:800;color:#FFFBF3;letter-spacing:-0.02em;margin-bottom:6px}
-.contact-h em{font-style:italic;font-weight:300;color:rgba(255,251,243,0.4)}
-.contact-email{font-size:14px;color:rgba(255,251,243,0.6)}
-.contact-email a{color:#FBF4D7;font-weight:600;text-decoration:none}
-.contact-btns{display:flex;gap:8px;flex-wrap:wrap}
-.cbtn-w{padding:10px 18px;background:#FFFBF3;color:#BA3B41;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.03em}
-.cbtn-o{padding:10px 18px;background:transparent;color:rgba(255,251,243,0.7);border:0.5px solid rgba(255,251,243,0.25);border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.03em}
+  .nav-share {
+    padding: 7px 16px;
+    background: #0F1919;
+    color: #FFFBF3;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border: none;
+    font-family: inherit
+  }
 
-/* FOOTER */
-.footer{padding:20px 48px;background:#0F1919;display:flex;align-items:center;justify-content:space-between}
-.footer-l{font-size:11px;color:rgba(255,251,243,0.25);font-weight:500}
-.footer-l span{color:#BA3B41}
-.footer-r{font-size:11px;color:rgba(255,251,243,0.18)}
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    min-height: 520px
+  }
 
-/* NO-AWARD empty state */
-.no-award{text-align:center;padding:40px 20px;border:0.5px dashed rgba(15,25,25,0.12);border-radius:10px;background:#FFFBF3}
-.no-award i{font-size:28px;color:rgba(15,25,25,0.15);display:block;margin-bottom:8px}
-.no-award p{font-size:12px;color:rgba(15,25,25,0.3)}
+  .hero-l {
+    padding: 64px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+  }
+
+  .cohort-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px 4px 4px;
+    background: rgba(186, 59, 65, 0.07);
+    border: 0.5px solid rgba(186, 59, 65, 0.18);
+    border-radius: 100px;
+    margin-bottom: 24px;
+    width: fit-content
+  }
+
+  .cohort-dot {
+    width: 18px;
+    height: 18px;
+    background: #BA3B41;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+
+  .cohort-dot i {
+    font-size: 10px;
+    color: #FFFBF3
+  }
+
+  .cohort-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #BA3B41;
+    letter-spacing: 0.06em;
+    text-transform: uppercase
+  }
+
+  .hero-name {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    color: #0F1919;
+    margin-bottom: 4px
+  }
+
+  .hero-name em {
+    font-style: italic;
+    font-weight: 300;
+    color: #BA3B41
+  }
+
+  .hero-role {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(15, 25, 25, 0.45);
+    margin-bottom: 16px;
+    letter-spacing: 0.01em
+  }
+
+  .hero-product {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0F1919;
+    padding: 10px 16px;
+    background: #FBF4D7;
+    border-radius: 8px;
+    border-left: 3px solid #BA3B41;
+    margin-bottom: 32px;
+    line-height: 1.5
+  }
+
+  .hero-product span {
+    font-weight: 400;
+    color: rgba(15, 25, 25, 0.6)
+  }
+
+  /* metrics row */
+  .metrics {
+    display: flex;
+    gap: 0;
+    margin-bottom: 32px;
+    border: 0.5px solid rgba(15, 25, 25, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff
+  }
+
+  .metric {
+    flex: 1;
+    padding: 16px 18px;
+    border-right: 0.5px solid rgba(15, 25, 25, 0.07)
+  }
+
+  .metric:last-child {
+    border-right: none
+  }
+
+  .metric-val {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0F1919;
+    letter-spacing: -0.02em;
+    line-height: 1
+  }
+
+  .metric-val.crimson {
+    color: #BA3B41
+  }
+
+  .metric-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(15, 25, 25, 0.38);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 3px
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap
+  }
+
+  .btn-r {
+    padding: 10px 18px;
+    background: #BA3B41;
+    color: #FFFBF3;
+    border: none;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em
+  }
+
+  .btn-o {
+    padding: 10px 18px;
+    background: transparent;
+    color: #0F1919;
+    border: 0.5px solid rgba(15, 25, 25, 0.18);
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em
+  }
+
+  .btn-i {
+    padding: 10px 18px;
+    background: transparent;
+    color: #BA3B41;
+    border: 0.5px solid rgba(186, 59, 65, 0.22);
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em
+  }
+
+  .hero-r {
+    background: #0F1919;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 28px;
+    gap: 0;
+    position: relative;
+    overflow: hidden
+  }
+
+  .hero-blob {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(186, 59, 65, 0.1);
+    bottom: -60px;
+    right: -60px
+  }
+
+  .hero-blob2 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(251, 244, 215, 0.04);
+    top: -30px;
+    left: -30px
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #BA3B41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    font-weight: 800;
+    color: #FFFBF3;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+    border: 2px solid rgba(251, 244, 215, 0.15)
+  }
+
+  .avatar-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: #FFFBF3;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 2px
+  }
+
+  .avatar-sub {
+    font-size: 11px;
+    color: rgba(255, 251, 243, 0.35);
+    letter-spacing: 0.06em;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 24px
+  }
+
+  .ffp-cert-badge {
+    background: rgba(186, 59, 65, 0.14);
+    border: 0.5px solid rgba(186, 59, 65, 0.28);
+    border-radius: 10px;
+    padding: 12px 16px;
+    width: 100%;
+    position: relative;
+    z-index: 2
+  }
+
+  .cert-row {
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
+
+  .cert-icon {
+    width: 32px;
+    height: 32px;
+    background: #BA3B41;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0
+  }
+
+  .cert-icon i {
+    font-size: 16px;
+    color: #FFFBF3
+  }
+
+  .cert-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 251, 243, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.08em
+  }
+
+  .cert-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFFBF3;
+    margin-top: 1px
+  }
+
+  /* SECTION COMMONS */
+  .sec {
+    padding: 64px 48px;
+    border-top: 0.5px solid rgba(15, 25, 25, 0.06)
+  }
+
+  .sec.cream {
+    background: #FBF4D7
+  }
+
+  .sec.dark {
+    background: #0F1919
+  }
+
+  .sec.white {
+    background: #FFFBF3
+  }
+
+  .sec-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #BA3B41;
+    margin-bottom: 6px
+  }
+
+  .sec-tag.light {
+    color: #DFA396
+  }
+
+  .sec-h {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: #0F1919;
+    margin-bottom: 4px
+  }
+
+  .sec-h em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(15, 25, 25, 0.35)
+  }
+
+  .sec-h.inv {
+    color: #FFFBF3
+  }
+
+  .sec-h.inv em {
+    color: rgba(255, 251, 243, 0.3)
+  }
+
+  .sec-sub {
+    font-size: 13px;
+    color: rgba(15, 25, 25, 0.45);
+    margin-bottom: 40px;
+    max-width: 480px;
+    line-height: 1.6
+  }
+
+  .sec-sub.inv {
+    color: rgba(255, 251, 243, 0.4)
+  }
+
+  /* PRODUCT SECTION */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start
+  }
+
+  .product-photo {
+    background: #FBF4D7;
+    border: 0.5px solid rgba(15, 25, 25, 0.08);
+    border-radius: 14px;
+    aspect-ratio: 4/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px
+  }
+
+  .product-photo i {
+    font-size: 36px;
+    color: rgba(186, 59, 65, 0.3)
+  }
+
+  .product-photo-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(15, 25, 25, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px
+  }
+
+  .product-name-block {}
+
+  .product-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0F1919;
+    letter-spacing: -0.02em;
+    margin-bottom: 3px
+  }
+
+  .product-desc {
+    font-size: 13px;
+    color: rgba(15, 25, 25, 0.6);
+    line-height: 1.65
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 0.5px solid rgba(15, 25, 25, 0.08);
+    border-radius: 8px
+  }
+
+  .info-row i {
+    font-size: 16px;
+    color: #BA3B41;
+    flex-shrink: 0
+  }
+
+  .info-row-content {}
+
+  .info-row-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(15, 25, 25, 0.35)
+  }
+
+  .info-row-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0F1919;
+    margin-top: 1px
+  }
+
+  .info-row-val a {
+    color: #BA3B41;
+    text-decoration: none
+  }
+
+  /* PROOF */
+  .proof-nums {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 32px
+  }
+
+  .pcard {
+    border-radius: 10px;
+    padding: 20px 16px
+  }
+
+  .pcard.dark-acc {
+    background: #BA3B41
+  }
+
+  .pcard.light-acc {
+    background: #FBF4D7;
+    border: 0.5px solid rgba(15, 25, 25, 0.07)
+  }
+
+  .pcard-val {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #0F1919;
+    margin-bottom: 2px
+  }
+
+  .pcard.dark-acc .pcard-val {
+    color: #FFFBF3
+  }
+
+  .pcard-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(15, 25, 25, 0.4)
+  }
+
+  .pcard.dark-acc .pcard-lbl {
+    color: rgba(255, 251, 243, 0.55)
+  }
+
+  /* EVENT PHOTOS */
+  .event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px
+  }
+
+  .event-photo {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid rgba(15, 25, 25, 0.08)
+  }
+
+  .event-photo-img {
+    background: #FBF4D7;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px
+  }
+
+  .event-photo-img i {
+    font-size: 32px;
+    color: rgba(186, 59, 65, 0.35)
+  }
+
+  .event-photo-img span {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(15, 25, 25, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em
+  }
+
+  .event-photo-cap {
+    padding: 12px 14px;
+    background: #fff
+  }
+
+  .event-photo-cap-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0F1919
+  }
+
+  .event-photo-cap-sub {
+    font-size: 11px;
+    color: rgba(15, 25, 25, 0.45);
+    margin-top: 2px
+  }
+
+  /* ASSETS */
+  .asset-cat {
+    margin-bottom: 28px
+  }
+
+  .asset-cat-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: rgba(15, 25, 25, 0.45);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid rgba(15, 25, 25, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 6px
+  }
+
+  .asset-cat-title i {
+    font-size: 14px;
+    color: #BA3B41
+  }
+
+  .asset-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px
+  }
+
+  .asset-thumb {
+    background: #FBF4D7;
+    border: 0.5px solid rgba(15, 25, 25, 0.08);
+    border-radius: 8px;
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer
+  }
+
+  .asset-thumb.video {
+    background: #0F1919
+  }
+
+  .asset-thumb i {
+    font-size: 22px;
+    color: rgba(186, 59, 65, 0.5)
+  }
+
+  .asset-thumb.video i {
+    color: rgba(186, 59, 65, 0.7)
+  }
+
+  .asset-thumb span {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(15, 25, 25, 0.3)
+  }
+
+  .asset-thumb.video span {
+    color: rgba(255, 251, 243, 0.3)
+  }
+
+  /* AI TOOLS — STATIC */
+  .ai-intro {
+    background: #FBF4D7;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+    border: 0.5px solid rgba(15, 25, 25, 0.07);
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
+
+  .ai-intro i {
+    font-size: 16px;
+    color: #BA3B41;
+    flex-shrink: 0
+  }
+
+  .ai-intro-text {
+    font-size: 12px;
+    color: rgba(15, 25, 25, 0.6);
+    line-height: 1.5
+  }
+
+  .ai-intro-text strong {
+    color: #0F1919;
+    font-weight: 700
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px
+  }
+
+  .tool-card {
+    background: rgba(255, 251, 243, 0.05);
+    border: 0.5px solid rgba(255, 251, 243, 0.09);
+    border-radius: 10px;
+    padding: 16px 14px
+  }
+
+  .tool-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFBF3;
+    margin-bottom: 3px
+  }
+
+  .tool-use {
+    font-size: 11px;
+    color: rgba(255, 251, 243, 0.4);
+    line-height: 1.5;
+    margin-bottom: 10px
+  }
+
+  .tool-level {
+    display: flex;
+    align-items: center;
+    gap: 6px
+  }
+
+  .level-dots {
+    display: flex;
+    gap: 3px
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 251, 243, 0.12)
+  }
+
+  .dot.on {
+    background: #BA3B41
+  }
+
+  .level-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 251, 243, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em
+  }
+
+  /* AWARDS — conditional */
+  .awards-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+  }
+
+  .award-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 20px;
+    background: #FBF4D7;
+    border-radius: 10px;
+    border: 0.5px solid rgba(15, 25, 25, 0.07)
+  }
+
+  .award-icon-wrap {
+    width: 44px;
+    height: 44px;
+    background: #BA3B41;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0
+  }
+
+  .award-icon-wrap i {
+    font-size: 22px;
+    color: #FFFBF3
+  }
+
+  .award-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0F1919;
+    margin-bottom: 2px
+  }
+
+  .award-sub {
+    font-size: 12px;
+    color: rgba(15, 25, 25, 0.5)
+  }
+
+  .award-badge {
+    margin-left: auto;
+    padding: 4px 10px;
+    background: rgba(186, 59, 65, 0.1);
+    border: 0.5px solid rgba(186, 59, 65, 0.22);
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #BA3B41;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap
+  }
+
+  /* CERTIFICATE */
+  .cert-section-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start
+  }
+
+  .cert-card {
+    border: 1.5px solid rgba(186, 59, 65, 0.25);
+    border-radius: 14px;
+    padding: 32px 28px;
+    background: #fff;
+    position: relative;
+    overflow: hidden
+  }
+
+  .cert-watermark {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(186, 59, 65, 0.05)
+  }
+
+  .cert-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px
+  }
+
+  .cert-top-icon {
+    width: 36px;
+    height: 36px;
+    background: #BA3B41;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+
+  .cert-top-icon i {
+    font-size: 18px;
+    color: #FFFBF3
+  }
+
+  .cert-top-text {}
+
+  .cert-top-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: rgba(15, 25, 25, 0.4)
+  }
+
+  .cert-top-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0F1919
+  }
+
+  .cert-divider {
+    height: 0.5px;
+    background: rgba(15, 25, 25, 0.08);
+    margin: 0 0 16px
+  }
+
+  .cert-issued-to {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(15, 25, 25, 0.35);
+    margin-bottom: 4px
+  }
+
+  .cert-student-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0F1919;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px
+  }
+
+  .cert-program {
+    font-size: 12px;
+    color: rgba(15, 25, 25, 0.5);
+    margin-bottom: 16px
+  }
+
+  .cert-sigs {
+    display: flex;
+    gap: 20px
+  }
+
+  .cert-sig {}
+
+  .cert-sig-line {
+    width: 80px;
+    height: 0.5px;
+    background: #0F1919;
+    margin-bottom: 4px
+  }
+
+  .cert-sig-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: #0F1919
+  }
+
+  .cert-sig-role {
+    font-size: 10px;
+    color: rgba(15, 25, 25, 0.4)
+  }
+
+  .cert-note {
+    background: #FBF4D7;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: rgba(15, 25, 25, 0.6);
+    line-height: 1.6
+  }
+
+  .cert-note strong {
+    color: #0F1919
+  }
+
+  /* CONTACT */
+  .contact-bar {
+    background: #BA3B41;
+    padding: 52px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center
+  }
+
+  .contact-h {
+    font-size: 28px;
+    font-weight: 800;
+    color: #FFFBF3;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px
+  }
+
+  .contact-h em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255, 251, 243, 0.4)
+  }
+
+  .contact-email {
+    font-size: 14px;
+    color: rgba(255, 251, 243, 0.6)
+  }
+
+  .contact-email a {
+    color: #FBF4D7;
+    font-weight: 600;
+    text-decoration: none
+  }
+
+  .contact-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap
+  }
+
+  .cbtn-w {
+    padding: 10px 18px;
+    background: #FFFBF3;
+    color: #BA3B41;
+    border: none;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em
+  }
+
+  .cbtn-o {
+    padding: 10px 18px;
+    background: transparent;
+    color: rgba(255, 251, 243, 0.7);
+    border: 0.5px solid rgba(255, 251, 243, 0.25);
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 20px 48px;
+    background: #0F1919;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+  }
+
+  .footer-l {
+    font-size: 11px;
+    color: rgba(255, 251, 243, 0.25);
+    font-weight: 500
+  }
+
+  .footer-l span {
+    color: #BA3B41
+  }
+
+  .footer-r {
+    font-size: 11px;
+    color: rgba(255, 251, 243, 0.18)
+  }
+
+  /* NO-AWARD empty state */
+  .no-award {
+    text-align: center;
+    padding: 40px 20px;
+    border: 0.5px dashed rgba(15, 25, 25, 0.12);
+    border-radius: 10px;
+    background: #FFFBF3
+  }
+
+  .no-award i {
+    font-size: 28px;
+    color: rgba(15, 25, 25, 0.15);
+    display: block;
+    margin-bottom: 8px
+  }
+
+  .no-award p {
+    font-size: 12px;
+    color: rgba(15, 25, 25, 0.3)
+  }
 </style>
 
 <div class="p">
@@ -192,7 +1116,13 @@ body{margin:0}
   <!-- NAV -->
   <nav class="nav">
     <div class="nav-left">
-      <div class="lm"><div class="lm-inner"><div class="lm-bar"></div><div class="lm-bar short"></div><div class="lm-bar"></div></div></div>
+      <div class="lm">
+        <div class="lm-inner">
+          <div class="lm-bar"></div>
+          <div class="lm-bar short"></div>
+          <div class="lm-bar"></div>
+        </div>
+      </div>
       <span class="nav-brand">Mesa <span>FFP</span> · 2026</span>
     </div>
     <div class="nav-right">
@@ -200,7 +1130,8 @@ body{margin:0}
       <span class="nav-link">Proof</span>
       <span class="nav-link">Assets</span>
       <span class="nav-link">Certificate</span>
-      <button class="nav-share"><i class="ti ti-share" style="font-size:12px;margin-right:5px" aria-hidden="true"></i>Share portfolio</button>
+      <button class="nav-share"><i class="ti ti-share" style="font-size:12px;margin-right:5px"
+          aria-hidden="true"></i>Share portfolio</button>
     </div>
   </nav>
 
@@ -214,7 +1145,8 @@ body{margin:0}
       <h1 class="hero-name">Priya <em>Sharma</em></h1>
       <p class="hero-role">FFP Graduate · Mesa School of Business · Bangalore</p>
       <div class="hero-product">
-        <strong>ReWear</strong> <span>— Upcycled fashion accessories made from textile waste, sold direct-to-consumer at flea markets and online.</span>
+        <strong>ReWear</strong> <span>— Upcycled fashion accessories made from textile waste, sold direct-to-consumer at
+          flea markets and online.</span>
       </div>
       <div class="metrics">
         <div class="metric">
@@ -235,9 +1167,12 @@ body{margin:0}
         </div>
       </div>
       <div class="hero-links">
-        <button class="btn-r"><i class="ti ti-world" style="font-size:13px;margin-right:6px" aria-hidden="true"></i>rewear.co</button>
-        <button class="btn-o"><i class="ti ti-brand-instagram" style="font-size:13px;margin-right:6px" aria-hidden="true"></i>@rewear.co</button>
-        <button class="btn-i"><i class="ti ti-mail" style="font-size:13px;margin-right:6px" aria-hidden="true"></i>Email</button>
+        <button class="btn-r"><i class="ti ti-world" style="font-size:13px;margin-right:6px"
+            aria-hidden="true"></i>rewear.co</button>
+        <button class="btn-o"><i class="ti ti-brand-instagram" style="font-size:13px;margin-right:6px"
+            aria-hidden="true"></i>@rewear.co</button>
+        <button class="btn-i"><i class="ti ti-mail" style="font-size:13px;margin-right:6px"
+            aria-hidden="true"></i>Email</button>
       </div>
     </div>
     <div class="hero-r">
@@ -271,7 +1206,9 @@ body{margin:0}
       <div class="product-info">
         <div>
           <div class="product-name">ReWear</div>
-          <p class="product-desc" style="margin-top:6px">Upcycled tote bags and accessories handcrafted from discarded textile off-cuts sourced from Bangalore garment factories. Each piece is one-of-a-kind, tagged with its fabric origin, and priced under ₹500.</p>
+          <p class="product-desc" style="margin-top:6px">Upcycled tote bags and accessories handcrafted from discarded
+            textile off-cuts sourced from Bangalore garment factories. Each piece is one-of-a-kind, tagged with its
+            fabric origin, and priced under ₹500.</p>
         </div>
         <div class="info-row">
           <i class="ti ti-world" aria-hidden="true"></i>
@@ -302,7 +1239,8 @@ body{margin:0}
   <section class="sec white">
     <div class="sec-tag">06 · 07 · 14 · 15 — Proof of work</div>
     <h2 class="sec-h">The <em>numbers</em> + the moments</h2>
-    <p class="sec-sub">Real outcomes from 2 weeks of execution. Revenue generated, customers served, and the events she showed up to.</p>
+    <p class="sec-sub">Real outcomes from 2 weeks of execution. Revenue generated, customers served, and the events she
+      showed up to.</p>
 
     <div class="proof-nums">
       <div class="pcard dark-acc">
@@ -352,14 +1290,18 @@ body{margin:0}
   <section class="sec cream">
     <div class="sec-tag">10 — Creative assets</div>
     <h2 class="sec-h">What she <em>made</em></h2>
-    <p class="sec-sub">Every creative produced during FFP — influencer collabs, performance marketing videos, and static ad creatives.</p>
+    <p class="sec-sub">Every creative produced during FFP — influencer collabs, performance marketing videos, and static
+      ad creatives.</p>
 
     <div class="asset-cat">
       <div class="asset-cat-title"><i class="ti ti-player-play" aria-hidden="true"></i>Influencer collab videos</div>
       <div class="asset-row">
-        <div class="asset-thumb video"><i class="ti ti-player-play" aria-hidden="true"></i><span>Collab video 1</span></div>
-        <div class="asset-thumb video"><i class="ti ti-player-play" aria-hidden="true"></i><span>Collab video 2</span></div>
-        <div class="asset-thumb video" style="opacity:0.4;border-style:dashed"><i class="ti ti-plus" aria-hidden="true"></i><span>Add more</span></div>
+        <div class="asset-thumb video"><i class="ti ti-player-play" aria-hidden="true"></i><span>Collab video 1</span>
+        </div>
+        <div class="asset-thumb video"><i class="ti ti-player-play" aria-hidden="true"></i><span>Collab video 2</span>
+        </div>
+        <div class="asset-thumb video" style="opacity:0.4;border-style:dashed"><i class="ti ti-plus"
+            aria-hidden="true"></i><span>Add more</span></div>
       </div>
     </div>
 
@@ -367,13 +1309,15 @@ body{margin:0}
       <div class="asset-cat-title"><i class="ti ti-device-tv" aria-hidden="true"></i>Performance marketing videos</div>
       <div class="asset-row">
         <div class="asset-thumb video"><i class="ti ti-player-play" aria-hidden="true"></i><span>Ad video 1</span></div>
-        <div class="asset-thumb video" style="opacity:0.4;border-style:dashed"><i class="ti ti-plus" aria-hidden="true"></i><span>Add more</span></div>
+        <div class="asset-thumb video" style="opacity:0.4;border-style:dashed"><i class="ti ti-plus"
+            aria-hidden="true"></i><span>Add more</span></div>
         <div class="asset-thumb video" style="opacity:0.2;border-style:dashed"></div>
       </div>
     </div>
 
     <div class="asset-cat" style="margin-bottom:0">
-      <div class="asset-cat-title"><i class="ti ti-photo" aria-hidden="true"></i>Performance marketing images · static ads</div>
+      <div class="asset-cat-title"><i class="ti ti-photo" aria-hidden="true"></i>Performance marketing images · static
+        ads</div>
       <div class="asset-row">
         <div class="asset-thumb"><i class="ti ti-photo" aria-hidden="true"></i><span>Static ad 1</span></div>
         <div class="asset-thumb"><i class="ti ti-photo" aria-hidden="true"></i><span>Static ad 2</span></div>
@@ -386,11 +1330,14 @@ body{margin:0}
   <section class="sec dark">
     <div class="sec-tag light">12 — AI tools used · FFP curriculum</div>
     <h2 class="sec-h inv">Trained on <em>AI</em></h2>
-    <p class="sec-sub inv">The same AI toolkit taught to every FFP student in 2026. Proficiency level reflects what Priya reached by end of program.</p>
+    <p class="sec-sub inv">The same AI toolkit taught to every FFP student in 2026. Proficiency level reflects what
+      Priya reached by end of program.</p>
 
     <div class="ai-intro" style="background:rgba(255,251,243,0.06);border-color:rgba(255,251,243,0.08)">
       <i class="ti ti-info-circle" style="color:rgba(255,251,243,0.4)" aria-hidden="true"></i>
-      <p class="ai-intro-text" style="color:rgba(255,251,243,0.45)"><strong style="color:rgba(255,251,243,0.8)">Static section.</strong> These tools are part of the official FFP 2026 curriculum — every graduate was trained on the same stack. Proficiency level is assessed by faculty at program end.</p>
+      <p class="ai-intro-text" style="color:rgba(255,251,243,0.45)"><strong style="color:rgba(255,251,243,0.8)">Static
+          section.</strong> These tools are part of the official FFP 2026 curriculum — every graduate was trained on the
+        same stack. Proficiency level is assessed by faculty at program end.</p>
     </div>
 
     <div class="tools-grid">
@@ -398,7 +1345,13 @@ body{margin:0}
         <div class="tool-name">ChatGPT</div>
         <div class="tool-use">Business planning, product descriptions, customer research prompts</div>
         <div class="tool-level">
-          <div class="level-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="level-dots">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
           <span class="level-label">Proficient</span>
         </div>
       </div>
@@ -406,7 +1359,13 @@ body{margin:0}
         <div class="tool-name">Canva AI</div>
         <div class="tool-use">Brand assets, ad creatives, social media content generation</div>
         <div class="tool-level">
-          <div class="level-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+          <div class="level-dots">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+          </div>
           <span class="level-label">Advanced</span>
         </div>
       </div>
@@ -414,7 +1373,13 @@ body{margin:0}
         <div class="tool-name">Meta Ads AI</div>
         <div class="tool-use">Performance marketing, audience targeting, ad copy generation</div>
         <div class="tool-level">
-          <div class="level-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="level-dots">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
           <span class="level-label">Foundational</span>
         </div>
       </div>
@@ -422,7 +1387,13 @@ body{margin:0}
         <div class="tool-name">Google Gemini</div>
         <div class="tool-use">Market research, competitor analysis, pricing strategy</div>
         <div class="tool-level">
-          <div class="level-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="level-dots">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
           <span class="level-label">Proficient</span>
         </div>
       </div>
@@ -430,7 +1401,13 @@ body{margin:0}
         <div class="tool-name">ElevenLabs</div>
         <div class="tool-use">AI voiceovers for product videos and reels</div>
         <div class="tool-level">
-          <div class="level-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="level-dots">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
           <span class="level-label">Foundational</span>
         </div>
       </div>
@@ -438,7 +1415,13 @@ body{margin:0}
         <div class="tool-name">Runway ML</div>
         <div class="tool-use">AI video editing for influencer collab content</div>
         <div class="tool-level">
-          <div class="level-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="level-dots">
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
           <span class="level-label">Proficient</span>
         </div>
       </div>
@@ -449,7 +1432,8 @@ body{margin:0}
   <section class="sec white">
     <div class="sec-tag">13 — Awards · optional section</div>
     <h2 class="sec-h">Recognition <em>earned</em></h2>
-    <p class="sec-sub">Shown only when a student won an award during FFP. Hidden entirely if no awards were received.</p>
+    <p class="sec-sub">Shown only when a student won an award during FFP. Hidden entirely if no awards were received.
+    </p>
 
     <div class="awards-wrap">
       <div class="award-card">
@@ -471,8 +1455,11 @@ body{margin:0}
     </div>
 
     <!-- This is what renders when student has NO awards — hidden in real build -->
-    <div style="margin-top:24px;padding:10px 14px;background:#FBF4D7;border-radius:7px;border:0.5px solid rgba(15,25,25,0.07)">
-      <p style="font-size:11px;font-weight:600;color:rgba(15,25,25,0.45);text-transform:uppercase;letter-spacing:0.06em">Empty state (no awards) — section hidden entirely in real build</p>
+    <div
+      style="margin-top:24px;padding:10px 14px;background:#FBF4D7;border-radius:7px;border:0.5px solid rgba(15,25,25,0.07)">
+      <p
+        style="font-size:11px;font-weight:600;color:rgba(15,25,25,0.45);text-transform:uppercase;letter-spacing:0.06em">
+        Empty state (no awards) — section hidden entirely in real build</p>
     </div>
   </section>
 
@@ -495,7 +1482,8 @@ body{margin:0}
         <div class="cert-divider"></div>
         <div class="cert-issued-to">This certifies that</div>
         <div class="cert-student-name">Priya Sharma</div>
-        <div class="cert-program">successfully completed the Future Founder Program · 2026<br>and built a real business within the 2-week program.</div>
+        <div class="cert-program">successfully completed the Future Founder Program · 2026<br>and built a real business
+          within the 2-week program.</div>
         <div class="cert-sigs">
           <div class="cert-sig">
             <div class="cert-sig-line"></div>
@@ -512,14 +1500,19 @@ body{margin:0}
 
       <div style="display:flex;flex-direction:column;gap:12px">
         <div class="cert-note">
-          <strong>Signed by both co-founders.</strong> This certificate is issued only upon program completion and verified by Mesa staff. It cannot be self-generated by students.
+          <strong>Signed by both co-founders.</strong> This certificate is issued only upon program completion and
+          verified by Mesa staff. It cannot be self-generated by students.
         </div>
         <div class="cert-note">
-          <strong>Demo day win included here.</strong> If a student won demo day, that recognition appears within this section — no separate block needed.
+          <strong>Demo day win included here.</strong> If a student won demo day, that recognition appears within this
+          section — no separate block needed.
         </div>
         <div style="padding:16px;background:#BA3B41;border-radius:8px">
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,251,243,0.55);margin-bottom:3px">Verification</div>
-          <div style="font-size:12px;font-weight:600;color:#FFFBF3">Verify at ffp.mesa.edu/verify/priya-sharma-2026</div>
+          <div
+            style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,251,243,0.55);margin-bottom:3px">
+            Verification</div>
+          <div style="font-size:12px;font-weight:600;color:#FFFBF3">Verify at ffp.mesa.edu/verify/priya-sharma-2026
+          </div>
         </div>
       </div>
     </div>
@@ -532,15 +1525,19 @@ body{margin:0}
       <div class="contact-email">priya.sharma@email.com &nbsp;·&nbsp; <a href="#">@rewear.co</a> on Instagram</div>
     </div>
     <div class="contact-btns">
-      <button class="cbtn-w"><i class="ti ti-brand-instagram" style="font-size:13px;margin-right:5px" aria-hidden="true"></i>Instagram</button>
-      <button class="cbtn-o"><i class="ti ti-mail" style="font-size:13px;margin-right:5px" aria-hidden="true"></i>Email</button>
-      <button class="cbtn-o"><i class="ti ti-world" style="font-size:13px;margin-right:5px" aria-hidden="true"></i>Website</button>
+      <button class="cbtn-w"><i class="ti ti-brand-instagram" style="font-size:13px;margin-right:5px"
+          aria-hidden="true"></i>Instagram</button>
+      <button class="cbtn-o"><i class="ti ti-mail" style="font-size:13px;margin-right:5px"
+          aria-hidden="true"></i>Email</button>
+      <button class="cbtn-o"><i class="ti ti-world" style="font-size:13px;margin-right:5px"
+          aria-hidden="true"></i>Website</button>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-l">Portfolio generated by <span>Mesa School of Business</span> · FFP 2026 · Not student-editable</div>
+    <div class="footer-l">Portfolio generated by <span>Mesa School of Business</span> · FFP 2026 · Not student-editable
+    </div>
     <div class="footer-r">ffp.mesa.edu/priya-sharma-2026</div>
   </footer>
 

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priya Sharma — FFP Portfolio · Mesa 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:#FFFBF3;color:#0F1919;overflow-x:hidden}
+
+/* ── TOKENS ── */
+:root{
+  --crimson:#BA3B41;
+  --crimson-dark:#702327;
+  --teal:#0F1919;
+  --cream:#FFFBF3;
+  --butter:#FBF4D7;
+  --peach:#DFA396;
+  --lemon:#E5E55A;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:0.08s}
+.reveal.d2{transition-delay:0.16s}
+.reveal.d3{transition-delay:0.24s}
+.reveal.d4{transition-delay:0.32s}
+
+/* ── NAV ── */
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:60px;background:rgba(255,251,243,0.94);
+  border-bottom:0.5px solid rgba(15,25,25,0.08);
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)
+}
+.nav-left{display:flex;align-items:center;gap:10px}
+.nav-mark{
+  width:30px;height:30px;background:#BA3B41;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0
+}
+.nav-mark svg{width:16px;height:16px}
+.nav-wordmark{font-size:13px;font-weight:700;color:#0F1919;letter-spacing:0.02em}
+.nav-wordmark span{color:#BA3B41}
+.nav-center{display:flex;gap:28px}
+.nav-center a{font-size:11px;font-weight:600;color:rgba(15,25,25,0.38);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
+.nav-center a:hover{color:#BA3B41}
+.nav-share{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 18px;background:#0F1919;color:#FFFBF3;
+  border:none;border-radius:7px;font-size:12px;font-weight:700;
+  cursor:pointer;font-family:inherit;letter-spacing:0.03em;transition:background 0.2s
+}
+.nav-share:hover{background:#BA3B41}
+.nav-share svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 340px;min-height:90vh;background:#FFFBF3}
+.hero-left{padding:72px 56px;display:flex;flex-direction:column;justify-content:center}
+.cohort-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:5px 14px 5px 5px;background:rgba(186,59,65,0.07);
+  border:0.5px solid rgba(186,59,65,0.18);border-radius:100px;
+  margin-bottom:28px;width:fit-content;animation:fadeUp 0.7s ease both
+}
+.cohort-dot{width:20px;height:20px;background:#BA3B41;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cohort-dot svg{width:10px;height:10px;fill:none;stroke:#FFFBF3;stroke-width:2.5}
+.cohort-text{font-size:11px;font-weight:700;color:#BA3B41;letter-spacing:0.07em;text-transform:uppercase}
+.hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,5.5vw,68px);font-weight:800;
+  letter-spacing:-0.025em;line-height:1.0;color:#0F1919;margin-bottom:6px;
+  animation:fadeUp 0.7s ease 0.1s both
+}
+.hero-name em{font-style:italic;font-weight:300;color:#BA3B41}
+.hero-role{font-size:14px;font-weight:500;color:rgba(15,25,25,0.42);margin-bottom:22px;animation:fadeUp 0.7s ease 0.15s both}
+.hero-product{
+  padding:14px 18px;background:#FBF4D7;border-radius:8px;
+  border-left:3px solid #BA3B41;margin-bottom:36px;
+  animation:fadeUp 0.7s ease 0.2s both
+}
+.hero-product strong{font-size:15px;font-weight:800;color:#0F1919;display:block;margin-bottom:3px}
+.hero-product p{font-size:13px;color:rgba(15,25,25,0.58);line-height:1.65}
+
+.metrics-strip{
+  display:flex;border:0.5px solid rgba(15,25,25,0.09);
+  border-radius:12px;overflow:hidden;background:#fff;
+  margin-bottom:36px;animation:fadeUp 0.7s ease 0.25s both
+}
+.mc{flex:1;padding:16px 20px;border-right:0.5px solid rgba(15,25,25,0.07)}
+.mc:last-child{border-right:none}
+.mc-val{font-size:26px;font-weight:800;letter-spacing:-0.02em;color:#0F1919;line-height:1}
+.mc-val.red{color:#BA3B41}
+.mc-lbl{font-size:10px;font-weight:600;color:rgba(15,25,25,0.36);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
+
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap;animation:fadeUp 0.7s ease 0.3s both}
+.btn-r{padding:11px 20px;background:#BA3B41;color:#FFFBF3;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.03em;display:flex;align-items:center;gap:6px;transition:background 0.2s}
+.btn-r:hover{background:#9e3137}
+.btn-o{padding:11px 20px;background:transparent;color:#0F1919;border:0.5px solid rgba(15,25,25,0.18);border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.03em;display:flex;align-items:center;gap:6px;transition:all 0.2s}
+.btn-o:hover{border-color:#BA3B41;color:#BA3B41}
+.btn-g{padding:11px 20px;background:transparent;color:#BA3B41;border:0.5px solid rgba(186,59,65,0.25);border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.03em;display:flex;align-items:center;gap:6px}
+
+.hero-right{
+  background:#0F1919;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:48px 32px;
+  position:relative;overflow:hidden;animation:fadeIn 1s ease 0.2s both
+}
+.blob1{position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(186,59,65,0.1);bottom:-80px;right:-80px;pointer-events:none}
+.blob2{position:absolute;width:130px;height:130px;border-radius:50%;background:rgba(251,244,215,0.04);top:-40px;left:-40px;pointer-events:none}
+.avatar{
+  width:128px;height:128px;border-radius:50%;background:#BA3B41;
+  display:flex;align-items:center;justify-content:center;
+  font-size:38px;font-weight:800;color:#FFFBF3;
+  margin-bottom:18px;position:relative;z-index:2;
+  border:2.5px solid rgba(251,244,215,0.15)
+}
+.avatar-name{font-size:18px;font-weight:800;color:#FFFBF3;text-align:center;position:relative;z-index:2;margin-bottom:3px}
+.avatar-sub{font-size:11px;color:rgba(255,251,243,0.32);letter-spacing:0.06em;text-align:center;position:relative;z-index:2;margin-bottom:28px}
+.cert-pill{
+  background:rgba(186,59,65,0.14);border:0.5px solid rgba(186,59,65,0.3);
+  border-radius:12px;padding:14px 16px;width:100%;position:relative;z-index:2
+}
+.cert-pill-row{display:flex;align-items:center;gap:12px}
+.cert-icon{width:36px;height:36px;background:#BA3B41;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cert-icon svg{width:18px;height:18px;fill:none;stroke:#FFFBF3;stroke-width:1.8}
+.cert-label{font-size:10px;font-weight:600;color:rgba(255,251,243,0.38);text-transform:uppercase;letter-spacing:0.08em}
+.cert-name{font-size:13px;font-weight:700;color:#FFFBF3;margin-top:2px}
+
+/* ── SHARED SECTION STYLES ── */
+section{padding:72px 56px;border-top:0.5px solid rgba(15,25,25,0.06)}
+.on-cream{background:#FBF4D7}
+.on-dark{background:#0F1919}
+.on-white{background:#FFFBF3}
+.sec-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#BA3B41;margin-bottom:8px}
+.sec-tag.inv{color:#DFA396}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,40px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:#0F1919;margin-bottom:6px}
+.sec-h em{font-style:italic;font-weight:300;color:rgba(15,25,25,0.3)}
+.sec-h.inv{color:#FFFBF3}
+.sec-h.inv em{color:rgba(255,251,243,0.28)}
+.sec-sub{font-size:13px;color:rgba(15,25,25,0.44);margin-bottom:44px;max-width:500px;line-height:1.65}
+.sec-sub.inv{color:rgba(255,251,243,0.38)}
+
+/* ── PRODUCT ── */
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.product-photo{
+  background:#e8e0cc;border-radius:16px;aspect-ratio:4/3;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;overflow:hidden;border:0.5px solid rgba(15,25,25,0.08)
+}
+.product-photo svg{width:44px;height:44px;stroke:rgba(186,59,65,0.3);fill:none;stroke-width:1.3}
+.product-photo span{font-size:11px;font-weight:600;color:rgba(15,25,25,0.28);text-transform:uppercase;letter-spacing:0.07em}
+.product-info{display:flex;flex-direction:column;gap:14px}
+.p-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:#0F1919;margin-bottom:4px}
+.p-desc{font-size:13px;color:rgba(15,25,25,0.58);line-height:1.7;margin-bottom:4px}
+.info-chip{display:flex;align-items:flex-start;gap:10px;padding:13px 16px;background:#fff;border:0.5px solid rgba(15,25,25,0.08);border-radius:8px}
+.info-chip svg{width:15px;height:15px;stroke:#BA3B41;fill:none;stroke-width:2;flex-shrink:0;margin-top:2px}
+.ic-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:rgba(15,25,25,0.33)}
+.ic-val{font-size:13px;font-weight:600;color:#0F1919;margin-top:2px}
+.ic-val a{color:#BA3B41;text-decoration:none}
+
+/* ── PROOF ── */
+.proof-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:36px}
+.pc{padding:22px 18px;border-radius:12px}
+.pc.acc{background:#BA3B41}
+.pc.lite{background:#FBF4D7;border:0.5px solid rgba(15,25,25,0.07)}
+.pc-val{font-size:28px;font-weight:800;letter-spacing:-0.025em;color:#0F1919}
+.pc.acc .pc-val{color:#FFFBF3}
+.pc-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:rgba(15,25,25,0.36);margin-top:4px}
+.pc.acc .pc-lbl{color:rgba(255,251,243,0.5)}
+
+/* event photo carousels */
+.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.event-card{border-radius:12px;overflow:hidden;border:0.5px solid rgba(15,25,25,0.08);background:#fff}
+.carousel-wrap{position:relative;height:210px;background:#FBF4D7;overflow:hidden}
+.c-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.7s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.c-slide.active{opacity:1}
+.c-slide svg{width:32px;height:32px;stroke:rgba(186,59,65,0.3);fill:none;stroke-width:1.5}
+.c-slide span{font-size:10px;font-weight:600;color:rgba(15,25,25,0.25);text-transform:uppercase;letter-spacing:0.07em}
+.c-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2}
+.cdot{width:6px;height:6px;border-radius:50%;background:rgba(15,25,25,0.2);cursor:pointer;transition:all 0.3s}
+.cdot.on{background:#BA3B41;width:16px;border-radius:3px}
+.event-cap{padding:14px 16px}
+.event-cap-title{font-size:14px;font-weight:700;color:#0F1919}
+.event-cap-sub{font-size:11px;color:rgba(15,25,25,0.42);margin-top:2px}
+
+/* ── ASSETS — sequential video autoplay ── */
+.asset-note{
+  display:flex;align-items:center;gap:8px;padding:11px 14px;
+  background:rgba(15,25,25,0.04);border-radius:7px;
+  border:0.5px solid rgba(15,25,25,0.07);margin-bottom:32px;
+  font-size:12px;color:rgba(15,25,25,0.5)
+}
+.asset-note svg{width:14px;height:14px;stroke:#BA3B41;fill:none;stroke-width:2;flex-shrink:0}
+.asset-cat{margin-bottom:32px}
+.asset-cat-header{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;
+  color:rgba(15,25,25,0.4);margin-bottom:12px;padding-bottom:10px;
+  border-bottom:0.5px solid rgba(15,25,25,0.08);display:flex;align-items:center;gap:6px
+}
+.asset-cat-header svg{width:13px;height:13px;stroke:#BA3B41;fill:none;stroke-width:2}
+.assets-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.a-thumb{
+  border-radius:8px;aspect-ratio:16/9;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;cursor:pointer;
+  overflow:hidden;position:relative;transition:all 0.3s
+}
+.a-thumb.vid{background:#0F1919;border:0.5px solid rgba(255,255,255,0.06)}
+.a-thumb.vid.playing{border:1.5px solid #BA3B41}
+.a-thumb.vid.playing::after{content:'';position:absolute;bottom:0;left:0;height:3px;background:#BA3B41;animation:progress 8s linear forwards}
+@keyframes progress{from{width:0%}to{width:100%}}
+.a-thumb.img{background:#FBF4D7;border:0.5px solid rgba(15,25,25,0.08)}
+.a-thumb.empty{background:transparent;border:0.5px dashed rgba(15,25,25,0.12)}
+.a-thumb svg{width:22px;height:22px;fill:none;stroke-width:1.8}
+.a-thumb.vid svg{stroke:rgba(186,59,65,0.6)}
+.a-thumb.img svg{stroke:rgba(186,59,65,0.35)}
+.a-thumb.empty svg{stroke:rgba(15,25,25,0.2)}
+.a-thumb span{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+.a-thumb.vid span{color:rgba(255,251,243,0.3)}
+.a-thumb.img span{color:rgba(15,25,25,0.3)}
+.a-thumb.empty span{color:rgba(15,25,25,0.2)}
+.a-thumb.playing .a-label{color:rgba(255,251,243,0.8)}
+
+/* ── AI TOOLS ROULETTE ── */
+.roulette-wrap{position:relative;overflow:hidden;height:220px;margin-bottom:0}
+.roulette-track{
+  display:flex;gap:14px;align-items:stretch;
+  width:max-content;
+  animation:roulette-scroll 18s linear infinite
+}
+.roulette-track:hover{animation-play-state:paused}
+@keyframes roulette-scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.tool-card{
+  width:200px;flex-shrink:0;
+  background:rgba(255,251,243,0.04);border:0.5px solid rgba(255,251,243,0.08);
+  border-radius:12px;padding:20px 18px;cursor:pointer;
+  transition:border-color 0.3s,background 0.3s;
+  display:flex;flex-direction:column
+}
+.tool-card:hover,.tool-card.active{border-color:rgba(186,59,65,0.5);background:rgba(186,59,65,0.06)}
+.tool-logo{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(255,251,243,0.08);margin-bottom:12px;
+  display:flex;align-items:center;justify-content:center;font-size:20px
+}
+.tool-name{font-size:14px;font-weight:700;color:#FFFBF3;margin-bottom:4px}
+.tool-use{font-size:11px;color:rgba(255,251,243,0.38);line-height:1.55;margin-bottom:12px;flex:1}
+.tool-level{display:flex;align-items:center;gap:7px;margin-top:auto}
+.pips{display:flex;gap:3px}
+.pip{width:7px;height:7px;border-radius:50%;background:rgba(255,251,243,0.1)}
+.pip.on{background:#BA3B41}
+.level-txt{font-size:10px;font-weight:600;color:rgba(255,251,243,0.28);text-transform:uppercase;letter-spacing:0.06em}
+.roulette-fade-l{position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(to right,#0F1919,transparent);z-index:2;pointer-events:none}
+.roulette-fade-r{position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(to left,#0F1919,transparent);z-index:2;pointer-events:none}
+
+/* ── AWARDS ── */
+section.awards-section{background:#0F1919;border-top:0.5px solid rgba(255,255,255,0.04)}
+.awards-bg-text{
+  position:absolute;font-family:'Playfair Display',serif;
+  font-size:180px;font-weight:800;color:rgba(255,251,243,0.02);
+  top:-20px;right:-20px;line-height:1;pointer-events:none;user-select:none;
+  letter-spacing:-0.04em
+}
+.awards-wrap{position:relative}
+.awards-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.award-card{
+  background:rgba(255,251,243,0.04);border:0.5px solid rgba(255,251,243,0.08);
+  border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;
+  transition:border-color 0.3s,background 0.3s
+}
+.award-card:hover{border-color:rgba(229,229,90,0.3);background:rgba(229,229,90,0.04)}
+.award-card.winner{border-color:rgba(229,229,90,0.25)}
+.award-lemon-stripe{
+  position:absolute;top:0;left:0;width:4px;height:100%;
+  background:#E5E55A
+}
+.award-stamp{
+  position:absolute;top:20px;right:20px;
+  width:56px;height:56px;border-radius:50%;
+  border:2px solid #E5E55A;display:flex;align-items:center;justify-content:center;
+  transform:rotate(-12deg)
+}
+.award-stamp svg{width:24px;height:24px;fill:none;stroke:#E5E55A;stroke-width:1.8}
+.award-icon{width:44px;height:44px;background:rgba(229,229,90,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.award-icon svg{width:22px;height:22px;fill:none;stroke:#E5E55A;stroke-width:1.8}
+.award-badge-label{
+  display:inline-block;padding:3px 10px;background:rgba(229,229,90,0.15);
+  border:0.5px solid rgba(229,229,90,0.3);border-radius:4px;
+  font-size:10px;font-weight:700;color:#E5E55A;letter-spacing:0.08em;
+  text-transform:uppercase;margin-bottom:10px
+}
+.award-title{font-size:17px;font-weight:800;color:#FFFBF3;margin-bottom:6px;line-height:1.3}
+.award-sub{font-size:12px;color:rgba(255,251,243,0.38);line-height:1.5}
+.award-student{font-size:12px;color:rgba(186,59,65,0.8);font-weight:600;margin-top:8px}
+
+/* ── CERTIFICATE ── */
+.cert-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.cert-doc{
+  border:1.5px solid rgba(186,59,65,0.2);border-radius:16px;
+  padding:36px 32px;background:#fff;position:relative;overflow:hidden
+}
+.cert-doc::after{
+  content:'';position:absolute;bottom:-30px;right:-30px;
+  width:130px;height:130px;border-radius:50%;background:rgba(186,59,65,0.05)
+}
+.cert-doc-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.cert-doc-icon{width:40px;height:40px;background:#BA3B41;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.cert-doc-icon svg{width:20px;height:20px;fill:none;stroke:#FFFBF3;stroke-width:1.8}
+.cert-doc-school{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:rgba(15,25,25,0.36)}
+.cert-doc-title{font-size:13px;font-weight:700;color:#0F1919;margin-top:2px}
+.cert-divider{height:0.5px;background:rgba(15,25,25,0.08);margin:0 0 20px}
+.cert-issued-to{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:rgba(15,25,25,0.3);margin-bottom:5px}
+.cert-student-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:#0F1919;margin-bottom:5px}
+.cert-program{font-size:12px;color:rgba(15,25,25,0.46);line-height:1.6;margin-bottom:24px}
+.cert-sigs{display:flex;gap:28px}
+.sig-line{width:80px;height:0.5px;background:rgba(15,25,25,0.22);margin-bottom:5px}
+.sig-name{font-size:12px;font-weight:700;color:#0F1919}
+.sig-role{font-size:10px;color:rgba(15,25,25,0.38);margin-top:1px}
+.cert-notes{display:flex;flex-direction:column;gap:12px}
+.cert-note{padding:16px;background:#FBF4D7;border-radius:8px;font-size:12px;color:rgba(15,25,25,0.56);line-height:1.65;border:0.5px solid rgba(15,25,25,0.07)}
+.cert-note strong{color:#0F1919}
+
+/* ── NOTES (co-founder, mentor, peer) ── */
+section.notes-section{background:#0F1919;border-top:0.5px solid rgba(255,255,255,0.04)}
+.notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.note-card{
+  background:rgba(255,251,243,0.04);border:0.5px solid rgba(255,251,243,0.08);
+  border-radius:14px;padding:28px 24px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column
+}
+.note-type-badge{
+  display:inline-block;padding:3px 10px;border-radius:4px;
+  font-size:9px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;
+  margin-bottom:16px;width:fit-content
+}
+.ntb-cofounder{background:rgba(186,59,65,0.15);color:#DFA396}
+.ntb-mentor{background:rgba(229,229,90,0.12);color:#E5E55A}
+.ntb-peer{background:rgba(93,202,165,0.12);color:#5DCAA5}
+.note-quote-mark{
+  font-family:'Playfair Display',serif;font-size:64px;font-weight:700;
+  color:rgba(255,251,243,0.05);line-height:0.8;margin-bottom:8px
+}
+.note-message{font-size:13px;color:rgba(255,251,243,0.72);line-height:1.75;font-style:italic;flex:1;margin-bottom:20px}
+.note-author{display:flex;align-items:center;gap:10px;margin-top:auto}
+.note-avatar{
+  width:38px;height:38px;border-radius:50%;background:#BA3B41;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#FFFBF3;flex-shrink:0
+}
+.note-author-name{font-size:13px;font-weight:700;color:#FFFBF3}
+.note-author-role{font-size:11px;color:rgba(255,251,243,0.35);margin-top:1px}
+
+/* ── CONTACT ── */
+.contact-bar{
+  background:#BA3B41;padding:60px 56px;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center
+}
+.contact-title{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;color:#FFFBF3;letter-spacing:-0.02em;margin-bottom:8px}
+.contact-title em{font-style:italic;font-weight:300;color:rgba(255,251,243,0.42)}
+.contact-email{font-size:14px;color:rgba(255,251,243,0.58)}
+.contact-email a{color:#FBF4D7;font-weight:600;text-decoration:none}
+.contact-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.cbtn-w{padding:11px 20px;background:#FFFBF3;color:#BA3B41;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.2s}
+.cbtn-w:hover{background:#FBF4D7}
+.cbtn-o{padding:11px 20px;background:transparent;color:rgba(255,251,243,0.72);border:0.5px solid rgba(255,251,243,0.26);border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+
+/* ── FOOTER ── */
+footer{padding:20px 56px;background:#0F1919;display:flex;align-items:center;justify-content:space-between}
+.footer-l{font-size:11px;color:rgba(255,251,243,0.22);font-weight:500}
+.footer-l a{color:#BA3B41;text-decoration:none}
+.footer-r{font-size:11px;color:rgba(255,251,243,0.16)}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-center{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:40px 24px}
+  .hero-right{padding:36px 24px;border-top:0.5px solid rgba(255,251,243,0.06)}
+  section{padding:48px 24px}
+  .product-grid,.cert-layout,.cert-sigs{grid-template-columns:1fr}
+  .proof-cards{grid-template-columns:1fr 1fr}
+  .event-grid{grid-template-columns:1fr}
+  .awards-grid{grid-template-columns:1fr}
+  .notes-grid{grid-template-columns:1fr}
+  .assets-row{grid-template-columns:1fr 1fr}
+  .contact-bar{grid-template-columns:1fr;padding:40px 24px}
+  footer{padding:16px 24px;flex-direction:column;gap:6px;text-align:center}
+  .hero-name{font-size:38px}
+  .metrics-strip{flex-wrap:wrap}
+  .mc{min-width:50%}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-mark">
+      <svg viewBox="0 0 16 16" fill="white"><rect x="2" y="9" width="12" height="1.5" rx="0.75"/><rect x="2" y="6" width="12" height="1.5" rx="0.75"/><rect x="5" y="3" width="6" height="4" rx="1" fill="none" stroke="white" stroke-width="1.2"/></svg>
+    </div>
+    <span class="nav-wordmark">Mesa <span>FFP</span> · 2026</span>
+  </div>
+  <div class="nav-center">
+    <a href="#product">Venture</a>
+    <a href="#proof">Proof</a>
+    <a href="#assets">Assets</a>
+    <a href="#ai">AI Tools</a>
+    <a href="#awards">Awards</a>
+    <a href="#cert">Certificate</a>
+  </div>
+  <button class="nav-share" onclick="navigator.clipboard.writeText(window.location.href)">
+    <svg viewBox="0 0 16 16"><path d="M4 8V4h4M8 4l4 4M10 10v4H2V6"/></svg>
+    Share portfolio
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" style="border-top:none;padding:0">
+  <div class="hero-left">
+    <div class="cohort-pill">
+      <div class="cohort-dot"><svg viewBox="0 0 10 10"><path d="M2 5l2.5 2.5 3.5-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="cohort-text">Future Founder Program · Cohort 1 · 2026</span>
+    </div>
+    <h1 class="hero-name">Priya <em>Sharma</em></h1>
+    <p class="hero-role">FFP Graduate · Mesa School of Business · Bangalore</p>
+    <div class="hero-product">
+      <strong>ReWear</strong>
+      <p>Upcycled fashion accessories made from textile waste — sold direct-to-consumer at flea markets and online within the 2-week FFP program.</p>
+    </div>
+    <div class="metrics-strip">
+      <div class="mc"><div class="mc-val red" data-target="74000" data-prefix="₹" data-format="indian">₹0</div><div class="mc-lbl">Revenue</div></div>
+      <div class="mc"><div class="mc-val" data-target="340" data-suffix="">0</div><div class="mc-lbl">Customers</div></div>
+      <div class="mc"><div class="mc-val" data-target="2">0</div><div class="mc-lbl">Markets</div></div>
+      <div class="mc"><div class="mc-val" data-target="1">0</div><div class="mc-lbl">Demo Day</div></div>
+    </div>
+    <div class="hero-ctas">
+      <button class="btn-r">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="5.5"/><path d="M4 6.5h5M7 4.5l2 2-2 2"/></svg>
+        rewear.co
+      </button>
+      <button class="btn-o">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="9" height="9" rx="2.5"/><circle cx="6.5" cy="6.5" r="2"/><circle cx="9.5" cy="3.5" r="0.6" fill="currentColor"/></svg>
+        @rewear.co
+      </button>
+      <button class="btn-g">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10l3-3 2.5 2.5 3-4L13 8"/></svg>
+        Email
+      </button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+    <div class="avatar">PS</div>
+    <p class="avatar-name">Priya Sharma</p>
+    <p class="avatar-sub">Mesa · FFP Cohort 1 · 2026</p>
+    <div class="cert-pill">
+      <div class="cert-pill-row">
+        <div class="cert-icon"><svg viewBox="0 0 18 18"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5z"/></svg></div>
+        <div>
+          <div class="cert-label">Certificate of Entrepreneurship</div>
+          <div class="cert-name">Issued by Mesa School of Business</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCT ── -->
+<section id="product" class="on-cream reveal">
+  <div class="sec-tag">04 — Product worked on</div>
+  <h2 class="sec-h">What she <em>built</em></h2>
+  <p class="sec-sub">The actual product — designed, made, and sold within the 2-week FFP program.</p>
+  <div class="product-grid">
+    <div class="product-photo reveal d1">
+      <svg viewBox="0 0 44 44"><rect x="4" y="8" width="36" height="28" rx="4"/><path d="M4 16h36"/><circle cx="16" cy="26" r="4"/><path d="M16 22v8M16 26h12"/></svg>
+      <span>Product photo</span>
+    </div>
+    <div class="product-info">
+      <div class="reveal d1">
+        <div class="p-name">ReWear</div>
+        <p class="p-desc">Upcycled tote bags and accessories handcrafted from discarded textile off-cuts sourced from Bangalore garment factories. Each piece is one-of-a-kind, tagged with its fabric origin, priced under ₹500.</p>
+      </div>
+      <div class="info-chip reveal d2">
+        <svg viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="6"/><path d="M4 7.5h7M9 5l2.5 2.5L9 10"/></svg>
+        <div><div class="ic-label">Website</div><div class="ic-val"><a href="#">rewear.co ↗</a></div></div>
+      </div>
+      <div class="info-chip reveal d3">
+        <svg viewBox="0 0 15 15"><rect x="2" y="2" width="11" height="11" rx="3"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="11" cy="4" r="0.8" fill="#BA3B41"/></svg>
+        <div><div class="ic-label">Instagram</div><div class="ic-val"><a href="#">@rewear.co ↗</a></div></div>
+      </div>
+      <div class="info-chip reveal d4">
+        <svg viewBox="0 0 15 15"><path d="M2 11.5C2 9 4.5 7 7.5 7s5.5 2 5.5 4.5"/><circle cx="7.5" cy="4.5" r="2.5"/></svg>
+        <div><div class="ic-label">Target customer</div><div class="ic-val">18–28 year-olds, sustainability-conscious, metro India</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROOF ── -->
+<section id="proof" class="on-white reveal">
+  <div class="sec-tag">06 · 07 · 14 · 15 — Proof of work</div>
+  <h2 class="sec-h">The <em>numbers</em> + the moments</h2>
+  <p class="sec-sub">Real outcomes from 2 weeks of execution. Revenue generated, customers served, events attended.</p>
+  <div class="proof-cards">
+    <div class="pc acc reveal d1"><div class="pc-val" data-target="74000" data-prefix="₹" data-format="indian">₹0</div><div class="pc-lbl">Revenue generated</div></div>
+    <div class="pc lite reveal d2"><div class="pc-val" data-target="340">0</div><div class="pc-lbl">Customers reached</div></div>
+    <div class="pc lite reveal d3"><div class="pc-val" data-target="2">0</div><div class="pc-lbl">Markets attended</div></div>
+    <div class="pc lite reveal d4"><div class="pc-val" data-target="1">0</div><div class="pc-lbl">Demo day</div></div>
+  </div>
+  <div class="event-grid">
+    <div class="event-card reveal d1">
+      <div class="carousel-wrap" id="carousel-flea">
+        <div class="c-slide active">
+          <svg viewBox="0 0 32 32"><path d="M4 22l6-6 4 4 5-7 5 5"/><rect x="2" y="4" width="28" height="22" rx="3" fill="none" stroke-width="1.5"/></svg>
+          <span>Flea market · photo 1</span>
+        </div>
+        <div class="c-slide">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="13" r="5"/><path d="M4 28c0-6.627 5.373-12 12-12s12 5.373 12 12"/></svg>
+          <span>Flea market · photo 2</span>
+        </div>
+        <div class="c-slide">
+          <svg viewBox="0 0 32 32"><path d="M6 26V12l10-6 10 6v14"/><path d="M12 26v-8h8v8"/></svg>
+          <span>Flea market · photo 3</span>
+        </div>
+        <div class="c-dots" id="dots-flea">
+          <div class="cdot on" onclick="goSlide('flea',0)"></div>
+          <div class="cdot" onclick="goSlide('flea',1)"></div>
+          <div class="cdot" onclick="goSlide('flea',2)"></div>
+        </div>
+      </div>
+      <div class="event-cap"><div class="event-cap-title">Flea Market</div><div class="event-cap-sub">Indiranagar Sunday Market · FFP Week 1</div></div>
+    </div>
+    <div class="event-card reveal d2">
+      <div class="carousel-wrap" id="carousel-demo">
+        <div class="c-slide active">
+          <svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="18" rx="2" fill="none" stroke-width="1.5"/><path d="M12 28h8M16 22v6"/></svg>
+          <span>Demo day · photo 1</span>
+        </div>
+        <div class="c-slide">
+          <svg viewBox="0 0 32 32"><path d="M8 24V12l8-4 8 4v12"/><path d="M13 24v-6h6v6"/></svg>
+          <span>Demo day · photo 2</span>
+        </div>
+        <div class="c-dots" id="dots-demo">
+          <div class="cdot on" onclick="goSlide('demo',0)"></div>
+          <div class="cdot" onclick="goSlide('demo',1)"></div>
+        </div>
+      </div>
+      <div class="event-cap"><div class="event-cap-title">Demo Day</div><div class="event-cap-sub">Mesa School of Business · FFP Week 2</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ASSETS ── -->
+<section id="assets" class="on-cream reveal">
+  <div class="sec-tag">10 — Creative assets</div>
+  <h2 class="sec-h">What she <em>made</em></h2>
+  <p class="sec-sub">Every creative produced during FFP. Scroll in — videos play sequentially.</p>
+  <div class="asset-note">
+    <svg viewBox="0 0 14 14"><polygon points="3,2 11,7 3,12"/></svg>
+    <span>Videos play automatically in sequence as you scroll through this section</span>
+  </div>
+  <div class="asset-cat reveal d1">
+    <div class="asset-cat-header">
+      <svg viewBox="0 0 13 13"><polygon points="2,2 11,6.5 2,11"/></svg>
+      Influencer collab videos
+    </div>
+    <div class="assets-row">
+      <div class="a-thumb vid" id="vid-0" onclick="playVideo(0)">
+        <svg viewBox="0 0 22 22"><polygon points="4,3 18,11 4,19"/></svg>
+        <span class="a-label">Collab video 1</span>
+      </div>
+      <div class="a-thumb vid" id="vid-1" onclick="playVideo(1)">
+        <svg viewBox="0 0 22 22"><polygon points="4,3 18,11 4,19"/></svg>
+        <span class="a-label">Collab video 2</span>
+      </div>
+      <div class="a-thumb empty">
+        <svg viewBox="0 0 22 22"><path d="M11 4v14M4 11h14"/></svg>
+        <span>More videos</span>
+      </div>
+    </div>
+  </div>
+  <div class="asset-cat reveal d2">
+    <div class="asset-cat-header">
+      <svg viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="2"/><path d="M1 5h11"/></svg>
+      Performance marketing videos
+    </div>
+    <div class="assets-row">
+      <div class="a-thumb vid" id="vid-2" onclick="playVideo(2)">
+        <svg viewBox="0 0 22 22"><polygon points="4,3 18,11 4,19"/></svg>
+        <span class="a-label">Ad video 1</span>
+      </div>
+      <div class="a-thumb empty">
+        <svg viewBox="0 0 22 22"><path d="M11 4v14M4 11h14"/></svg>
+        <span>More videos</span>
+      </div>
+      <div class="a-thumb empty"></div>
+    </div>
+  </div>
+  <div class="asset-cat reveal d3" style="margin-bottom:0">
+    <div class="asset-cat-header">
+      <svg viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="2"/><circle cx="4" cy="4" r="1.5"/><path d="M1 9l3-3 3 2 2-3 4 4"/></svg>
+      Performance marketing images · static ads
+    </div>
+    <div class="assets-row">
+      <div class="a-thumb img"><svg viewBox="0 0 22 22" stroke="rgba(186,59,65,0.35)"><rect x="2" y="2" width="18" height="18" rx="3"/><circle cx="7" cy="7" r="2.5"/><path d="M2 14l5-5 4 3.5 3-4 6 6"/></svg><span>Static ad 1</span></div>
+      <div class="a-thumb img"><svg viewBox="0 0 22 22" stroke="rgba(186,59,65,0.35)"><rect x="2" y="2" width="18" height="18" rx="3"/><circle cx="7" cy="7" r="2.5"/><path d="M2 14l5-5 4 3.5 3-4 6 6"/></svg><span>Static ad 2</span></div>
+      <div class="a-thumb img"><svg viewBox="0 0 22 22" stroke="rgba(186,59,65,0.35)"><rect x="2" y="2" width="18" height="18" rx="3"/><circle cx="7" cy="7" r="2.5"/><path d="M2 14l5-5 4 3.5 3-4 6 6"/></svg><span>Static ad 3</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI TOOLS ROULETTE ── -->
+<section id="ai" class="on-dark reveal" style="padding-left:0;padding-right:0;overflow:hidden">
+  <div style="padding:0 56px">
+    <div class="sec-tag inv">12 — AI Tools · FFP Curriculum</div>
+    <h2 class="sec-h inv">Trained on <em>AI</em></h2>
+    <p class="sec-sub inv" style="margin-bottom:32px">The same toolkit taught to every FFP 2026 student. Hover to pause. Proficiency assessed by faculty.</p>
+  </div>
+  <div class="roulette-wrap">
+    <div class="roulette-fade-l"></div>
+    <div class="roulette-fade-r"></div>
+    <div class="roulette-track" id="roulette">
+      <!-- cards injected twice for seamless loop -->
+    </div>
+  </div>
+</section>
+
+<!-- ── AWARDS ── -->
+<section id="awards" class="awards-section on-dark reveal" style="position:relative;overflow:hidden">
+  <div class="awards-bg-text">Won</div>
+  <div class="awards-wrap">
+    <div class="sec-tag inv">13 — Awards · earned during FFP</div>
+    <h2 class="sec-h inv" style="margin-bottom:6px">She <em>won</em></h2>
+    <p class="sec-sub inv">This section only appears when a student earned an award. Hidden entirely if no awards.</p>
+    <div class="awards-grid">
+      <div class="award-card winner reveal d1">
+        <div class="award-lemon-stripe"></div>
+        <div class="award-stamp"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 7H22l-6 4.5 2.3 7L12 17l-6.3 3.5 2.3-7L2 9h7.5z"/></svg></div>
+        <div class="award-icon"><svg viewBox="0 0 22 22"><path d="M7 3h8v7a4 4 0 01-8 0V3zM4 3h3v5a3 3 0 01-3-3V3zM15 3h3v2a3 3 0 01-3 3V3zM11 14v5M8 19h6"/></svg></div>
+        <div class="award-badge-label">Winner</div>
+        <div class="award-title">Demo Day Winner — Best Sustainable Business</div>
+        <div class="award-sub">FFP Cohort 1 · 2026 · Mesa School of Business · Bangalore</div>
+        <div class="award-student">Awarded to Priya Sharma</div>
+      </div>
+      <div class="award-card reveal d2">
+        <div class="award-lemon-stripe" style="background:#BA3B41"></div>
+        <div class="award-icon" style="background:rgba(186,59,65,0.15)"><svg viewBox="0 0 22 22" stroke="#DFA396"><path d="M11 2l2 5.5h5.5l-4.5 3.3 1.7 5.5L11 13.4l-4.7 2.9 1.7-5.5L3.5 7.5H9z"/></svg></div>
+        <div class="award-badge-label" style="background:rgba(186,59,65,0.15);border-color:rgba(186,59,65,0.3);color:#DFA396">Top Performer</div>
+        <div class="award-title">Highest Revenue — FFP Cohort 1 · 2026</div>
+        <div class="award-sub">₹74,000 generated in 2 weeks · highest among all FFP students this cohort</div>
+        <div class="award-student">Awarded to Priya Sharma</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATE ── -->
+<section id="cert" class="on-cream reveal">
+  <div class="sec-tag">11 — Certificate of Entrepreneurship</div>
+  <h2 class="sec-h">Officially <em>certified</em></h2>
+  <p class="sec-sub">Signed by both co-founders of Mesa School of Business. A permanent verified record.</p>
+  <div class="cert-layout">
+    <div class="cert-doc reveal d1">
+      <div class="cert-doc-header">
+        <div class="cert-doc-icon"><svg viewBox="0 0 20 20"><path d="M10 2l2.2 6.2H19l-5.4 3.9 2.1 6.2L10 14.5l-5.7 3.8 2.1-6.2L1 8.2h6.8z"/></svg></div>
+        <div>
+          <div class="cert-doc-school">Mesa School of Business</div>
+          <div class="cert-doc-title">Certificate of Entrepreneurship</div>
+        </div>
+      </div>
+      <div class="cert-divider"></div>
+      <div class="cert-issued-to">This certifies that</div>
+      <div class="cert-student-name">Priya Sharma</div>
+      <div class="cert-program">successfully completed the Future Founder Program · Cohort 1 · 2026<br>and built a real, revenue-generating business within the 2-week program.</div>
+      <div class="cert-sigs">
+        <div><div class="sig-line"></div><div class="sig-name">Co-founder A</div><div class="sig-role">Mesa School of Business</div></div>
+        <div><div class="sig-line"></div><div class="sig-name">Co-founder B</div><div class="sig-role">Mesa School of Business</div></div>
+      </div>
+    </div>
+    <div class="cert-notes reveal d2">
+      <div class="cert-note"><strong>Signed by both co-founders.</strong> Issued only on program completion and verified by Mesa staff. Cannot be self-generated by students.</div>
+      <div class="cert-note"><strong>Demo day win included.</strong> If the student won demo day, that recognition is captured here — no separate section needed.</div>
+      <div class="cert-note" style="background:#0F1919;color:rgba(255,251,243,0.5);border-color:rgba(255,255,255,0.06)"><strong style="color:#FFFBF3">This portfolio is the verification.</strong> Hosted at ffp.mesa.edu — the URL itself is the proof of authenticity.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PERSONALISED NOTES ── -->
+<section class="notes-section on-dark reveal">
+  <div style="padding-bottom:0">
+    <div class="sec-tag inv">Personalised notes</div>
+    <h2 class="sec-h inv">What people <em>say</em></h2>
+    <p class="sec-sub inv">Three voices. Co-founder, mentor, and a peer — each one unique to this student.</p>
+  </div>
+  <div class="notes-grid">
+    <div class="note-card reveal d1">
+      <div class="note-type-badge ntb-cofounder">Co-founder</div>
+      <div class="note-quote-mark">"</div>
+      <p class="note-message">Priya came in quiet and left loud. She figured out that selling isn't about pushing — it's about listening. Watching her go from nervous at her first market stall to confidently pitching on demo day was exactly why we built FFP.</p>
+      <div class="note-author">
+        <div class="note-avatar">AK</div>
+        <div><div class="note-author-name">Arjun Kumar</div><div class="note-author-role">Co-founder, Mesa School of Business</div></div>
+      </div>
+    </div>
+    <div class="note-card reveal d2">
+      <div class="note-type-badge ntb-mentor">Mentor</div>
+      <div class="note-quote-mark">"</div>
+      <p class="note-message">She underpriced herself in week one. I told her to double it. She argued. Then she doubled it and sold out in two hours. That was her turning point — the moment she stopped asking permission and started trusting her gut.</p>
+      <div class="note-author">
+        <div class="note-avatar" style="background:#702327">RN</div>
+        <div><div class="note-author-name">Riya Nair</div><div class="note-author-role">Mentor · FFP Cohort 1 · 2026</div></div>
+      </div>
+    </div>
+    <div class="note-card reveal d3">
+      <div class="note-type-badge ntb-peer">Peer</div>
+      <div class="note-quote-mark">"</div>
+      <p class="note-message">Priya helped me with my pitch deck at 11pm the night before demo day. She didn't have to. That's just who she is — someone who wins and still makes time to lift the people around her.</p>
+      <div class="note-author">
+        <div class="note-avatar" style="background:#1D9E75">SM</div>
+        <div><div class="note-author-name">Sahil Mehta</div><div class="note-author-role">Fellow FFP Student · Cohort 1 · 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<div class="contact-bar reveal">
+  <div>
+    <div class="contact-title">Get in <em>touch</em></div>
+    <div class="contact-email">priya.sharma@email.com &nbsp;·&nbsp; <a href="#">@rewear.co</a> on Instagram</div>
+  </div>
+  <div class="contact-btns">
+    <button class="cbtn-w">Instagram ↗</button>
+    <button class="cbtn-o">Email</button>
+    <button class="cbtn-o">Website ↗</button>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-l">Portfolio by <a href="#">Mesa School of Business</a> · FFP 2026 · Not student-editable</div>
+  <div class="footer-r">ffp.mesa.edu/priya-sharma-2026-c1</div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})
+},{threshold:0.12})
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
+
+// ── NUMBER COUNTERS ──
+function formatIndian(n){
+  if(n>=100000)return'₹'+Math.round(n/1000)+'K'
+  return'₹'+n.toLocaleString('en-IN')
+}
+function animateCount(el){
+  const target=parseInt(el.dataset.target)
+  const isRevenue=el.dataset.format==='indian'
+  const prefix=el.dataset.prefix||''
+  const duration=1200
+  const start=performance.now()
+  function step(now){
+    const progress=Math.min((now-start)/duration,1)
+    const ease=1-Math.pow(1-progress,3)
+    const val=Math.round(target*ease)
+    el.textContent=isRevenue?formatIndian(val):prefix+val.toLocaleString()
+    if(progress<1)requestAnimationFrame(step)
+    else el.textContent=isRevenue?formatIndian(target):prefix+target.toLocaleString()
+  }
+  requestAnimationFrame(step)
+}
+const counterObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.counted){
+      e.target.dataset.counted='1'
+      animateCount(e.target)
+    }
+  })
+},{threshold:0.5})
+document.querySelectorAll('[data-target]').forEach(el=>counterObserver.observe(el))
+
+// ── CAROUSELS ──
+const carousels={flea:{idx:0,total:3},demo:{idx:0,total:2}}
+function goSlide(id,idx){
+  const c=document.getElementById('carousel-'+id)
+  const slides=c.querySelectorAll('.c-slide')
+  const dots=document.getElementById('dots-'+id).querySelectorAll('.cdot')
+  slides.forEach(s=>s.classList.remove('active'))
+  dots.forEach(d=>d.classList.remove('on'))
+  slides[idx].classList.add('active')
+  dots[idx].classList.add('on')
+  carousels[id].idx=idx
+}
+function autoCarousel(id){
+  const c=carousels[id]
+  c.idx=(c.idx+1)%c.total
+  goSlide(id,c.idx)
+}
+setInterval(()=>autoCarousel('flea'),3000)
+setInterval(()=>autoCarousel('demo'),3800)
+
+// ── VIDEO SEQUENTIAL AUTOPLAY ──
+let currentVid=-1
+const vidEls=document.querySelectorAll('.a-thumb.vid')
+function playVideo(i){
+  vidEls.forEach((v,idx)=>{
+    v.classList.toggle('playing',idx===i)
+  })
+  currentVid=i
+  // Simulate video ending after 8s → play next
+  clearTimeout(window._vidTimer)
+  window._vidTimer=setTimeout(()=>{
+    const next=i+1
+    if(next<vidEls.length)playVideo(next)
+    else vidEls.forEach(v=>v.classList.remove('playing'))
+  },8000)
+}
+// Auto-trigger when assets section enters view
+const assetsSection=document.getElementById('assets')
+const assetObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&currentVid===-1)playVideo(0)
+  })
+},{threshold:0.3})
+if(assetsSection)assetObserver.observe(assetsSection)
+
+// ── AI TOOLS ROULETTE ──
+const tools=[
+  {name:'ChatGPT',use:'Business planning, product descriptions, customer research',logo:'💬',proficiency:3},
+  {name:'Canva AI',use:'Brand assets, ad creatives, social content generation',logo:'🎨',proficiency:4},
+  {name:'Meta Ads AI',use:'Performance marketing, audience targeting, ad copy',logo:'📊',proficiency:2},
+  {name:'Google Gemini',use:'Market research, competitor analysis, pricing strategy',logo:'✦',proficiency:3},
+  {name:'ElevenLabs',use:'AI voiceovers for product videos and reels',logo:'🎙',proficiency:2},
+  {name:'Runway ML',use:'AI video editing for influencer collab content',logo:'🎬',proficiency:3},
+]
+const levels=['','Foundational','Proficient','Advanced','Advanced+','Expert']
+function buildCard(t){
+  const pips=Array.from({length:5},(_,i)=>`<div class="pip${i<t.proficiency?' on':''}"></div>`).join('')
+  return`<div class="tool-card">
+    <div class="tool-logo">${t.logo}</div>
+    <div class="tool-name">${t.name}</div>
+    <div class="tool-use">${t.use}</div>
+    <div class="tool-level"><div class="pips">${pips}</div><span class="level-txt">${levels[t.proficiency]}</span></div>
+  </div>`
+}
+const track=document.getElementById('roulette')
+// Duplicate for seamless loop
+const html=tools.map(buildCard).join('')
+track.innerHTML=html+html
+</script>
+</body>
+</html>
